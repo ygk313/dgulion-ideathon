@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block content %}
+        <div align="center" class="container" style="font-family:SDKukdetopokki-Lt;">
+            <br>
+            <h2 style="margin-bottom:0;">아이디어 수정하기</h2>
+            <div class="box" style="border-style: solid; width:70%; margin-top:5%; hegiht:50%;" >
+            <form action="{% url 'homepage:update' post.id %}" method="POST" enctype="multipart/form-data" novalidate >
+                    {% csrf_token %}
+                <br>
+                <label>아이디어 제목</label>
+                <input type="text" name="title" style="width:90%;" value="{{post.title}}">
+                <br><br>
+                <label>아이디어 설명</label>
+                <textarea name="content" style="width:90%;">{{post.content}}</textarea>
+                <br><br>
+                <div class="container" style="padding:0;">
+                    <h6> 수정 전 파일 : {{ name }} 
+                    </h6>
+                    <div class="container" style="margin-left:10%;">
+                        <input type="file" name="image">
+                    </div>
+                    <br>
+                    <h6>파일을 넣고 싶지 않을 때 -> 
+                    <a href="{%url 'homepage:delete_image' post.pk %}" class="right comment-delete-button" id="comment-delete-{{ post.pk }}" data-comment-id="{{ post.pk }}">삭제</a>
+                    </h6>
+                </div>
+                <br><br>
+                <input type="submit" class="btn btn-dark" value="submit">
+                <br>
+                <br>
+            </form>
+            </div>
+        </div>
+
+<script>
+    //  댓글 삭제시 Ajax
+    $('.comment-delete-button').click(function(e){
+            e.preventDefault();
+            const deleteCommentButton = $(this);
+            const commentId = $(this).data('comment-id');
+            $.ajax({
+                url: `/homepage/delete_image/${commentId}/`,
+                data: {'csrfmiddlewaretoken': '{{ csrf_token }}'},
+                type: "POST",
+                success: function(response) {
+                    $(`#comment-${commentId}`).remove();
+                },
+                error: function(response) {
+                    alert('오류가 발생했습니다.');
+                }
+            })
+        });
+</script>           
+{% endblock %}

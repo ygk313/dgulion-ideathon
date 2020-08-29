@@ -1,0 +1,18 @@
+{% extends 'base_logo.html' %}
+{% block logcontent %}
+<div align="center" class="container" style="font-family:SDKukdetopokki-Lt;">
+    <br>
+    <h2 style="margin-bottom:0;">로그아웃</h2>
+    <div class="box" style="width:70%; margin-top:5%; hegiht:50%;">
+        <p><h3>정말로 로그아웃 하시겠습니까?</h3></p>
+        <form method="post" action="{% url 'account_logout' %}">
+            {% csrf_token %}
+            {% if redirect_field_value %}
+            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+            {% endif %}
+            <button type="submit" class="btn btn-dark">로그아웃</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

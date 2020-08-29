@@ -1,0 +1,32 @@
+{% extends 'base_logo.html' %}
+{% block logcontent %}
+<div align="center" class="container" style="font-family:SDKukdetopokki-Lt;">
+    <br>
+    <h2 style="margin-bottom:0;">로그인</h2>
+     
+    <div class="box" style="border-style: solid; width:70%; margin-top:5%;">
+        <form class="login" method="POST" action="{% url 'account_login' %}">
+            {% csrf_token %}
+            <!-- Username -->
+            <br>
+            <label for="id_login" class="control-label">
+                이메일
+            </label>
+            <input type="text" name="login" placeholder="DGULikeLion 이메일" autofocus="autofocus"  id="username" class="input-md round form-control" pattern=".{3,100}" required id = "id_login" style="width:50%;">                 
+                <!-- Password -->
+            <label for="id_password" class="control-label">
+                비밀번호
+            </label>
+            <input type="password" name="password" placeholder = "비밀번호" required_id="id_password" class="input-md round form-control"  pattern=".{5,100}" style="width:50%;">
+            {% if redirect_field_value %}
+            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+            {% endif %}        
+            <br>
+            <button class="btn btn-dark">로그인</button>    
+            <br>
+            <br>
+        </form>
+    </div>   
+</div>
+
+{% endblock %}

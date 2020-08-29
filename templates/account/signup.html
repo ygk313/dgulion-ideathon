@@ -1,0 +1,37 @@
+{% extends 'base_logo.html' %}
+{% block logcontent %}
+<div align="center" class="container" style="font-family:SDKukdetopokki-Lt;">
+    <br>
+    <input type="hidden" name="csrfmiddlewaretoken" value="i707gboGJapzUkvr7TMKdUoKXEwpe3GyTMQG2z390av36RfWCP9Ph94o4Pku3h7v">
+    <h2 style="margin-bottom:0;">회원가입</h2>
+     
+    <div class="box" style="border-style: solid; width:70%; margin-top:5%;">
+        <form class="login" method="POST" action="{% url 'account_signup' %}">
+            {% csrf_token %}
+            <!-- Username -->
+            <br>
+            <label for="id_username" class="control-label">
+                아이디
+            </label>
+            <input type="text" name="username" placeholder="아이디" autofocus="autofocus" minlength="1" maxlength="150" required id="id_username" class="input-md round form-control" style="width:50%;">    
+            <!-- email -->
+            <br>
+            <label for="id_email" class="control-label">이메일 (선택사항):</label> 
+            <input type="email" name="email" placeholder="이메일 주소" id="id_email" class="input-md round form-control" style="width:50%;">
+            <!-- Password -->
+            <label for="id_password1" class="control-label">
+                비밀번호
+            </label>
+           <input type="password" name="password1" placeholder="비밀번호" required id="id_password1" class="input-md round form-control" style="width:50%;">
+            <br>
+           <label for="id_password2" class="control-label">비밀번호 (확인):</label> 
+           <input type="password" name="password2" placeholder="비밀번호 (확인)" required id="id_password2" class="input-md round form-control" style="width:50%;">
+            <br>
+            <button type="submit" class="btn btn-dark">회원가입  &raquo;</button>    
+            <br>
+            <br>
+        </form>
+    </div>   
+</div>
+
+{% endblock %}

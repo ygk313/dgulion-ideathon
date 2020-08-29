@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+<div align="center" class="container" style="font-family:SDKukdetopokki-Lt;" style="margin-top:10px;">
+    <br>
+    <h2 style="margin-bottom:0;">아이디어 작성하기</h2>
+    <div class="box" style="border-style: solid; width:70%; margin-top:5%; hegiht:50%;"   >
+    <form action="{% url 'homepage:create' %}" method="POST" enctype="multipart/form-data" novalidate>
+        {% csrf_token %}
+        <br>
+        <label>아이디어 제목</label>
+        <input type="text" name="title" style="width:90%;">
+        <br><br>
+        <label>아이디어 설명</label>
+        <textarea name="content" style="width:90%;"></textarea>
+        <br>
+        <br>
+        <div class="container" style="padding:0; margin-left:10%;">
+            <input type="file" accpet="image/" name="image">
+        </div>
+        <br>
+        <input type="submit" class="btn btn-dark" value="submit">
+        <br>
+        <br>
+    </form>
+    </div>
+</div>
+{% endblock %}
