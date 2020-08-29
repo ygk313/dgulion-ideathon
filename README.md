@@ -1,5 +1,5 @@
 # 2020 동국대멋사 아이디어톤 
-(dguideaton/static/img/슬라이드1.JPG)
+<img src="dguideaton/static/img/슬라이드1.JPG">
 
 ## 서비스 소개
 2020 동국대학교 멋쟁이 사자처럼 8기의 중앙 아이디어톤과 해커톤을 준비하기 위한 아이디어 나눔의 장 입니다.
